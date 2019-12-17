@@ -1,0 +1,41 @@
+﻿@model GameDemo.Models.Result
+
+@*@model Tuple<GameDemo.Models.GameModel, List<GameDemo.Models.Result>>*@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm())
+        {
+            <br /><br />
+
+            <fieldset>
+                <h1>Player 1</h1>
+                <label>@Html.RadioButtonFor(m => m.Player1Move, GameDemo.Models.PlayerMoveChoices.rock) rock</label>
+                <label>@Html.RadioButtonFor(m => m.Player1Move, GameDemo.Models.PlayerMoveChoices.paper) paper</label>
+                <label>@Html.RadioButtonFor(m => m.Player1Move, GameDemo.Models.PlayerMoveChoices.scissors) scissors</label>
+            </fieldset>
+
+            <br /><br />
+
+            <fieldset>
+                <h1>Player 2</h1>
+                <label>@Html.RadioButtonFor(m => m.Player2Move, GameDemo.Models.PlayerMoveChoices.computer) computer</label>
+            </fieldset>
+
+            <br /><br />
+
+            <input type="submit" class="btn-primary btn-lg" name="submitButton" value="Play the game" />
+
+            <input type="submit" class="btn-primary btn-lg" name="submitButton" value="Result" />
+
+            <br /><br />
+                  <h5>@Html.Raw(Model.GameResult.Replace(",", "<br>"))</h5>
+            
+
+        }
+    </div>
+</div>
